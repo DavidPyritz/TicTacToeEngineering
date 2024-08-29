@@ -1,0 +1,41 @@
+http://david-pyritz.developerakademie.net/TicTacToe/index.html
+
+
+Ich möchte ein Tic Tac Toe spiel mit javascript, html und css schreiben. Ich möchte eine Funktion namens render() implementieren. -die funktion generiert eine 3x3 große Tabelle -der html code für die Tabelle wird mit .innerHTML in einen div-container mit der ID 'content' gerendert -In der Tabelle befindet sich o für einen Kreis und ein x für ein Kreuz Der aktuelle Zustand der Felder wird in solch einem Array gespeichert
+
+
+
+
+
+
+ich programmiere immer noch an meinem tic tac toe spiel so sieht mein aktueller code aus: let fields = [null, 'circle', 'cross', null, null, null, null, null, null];
+
+function init(){
+    render();
+}
+
+function render() {
+    const contentDiv = document.getElementById('content');
+    let tableHTML = '<table class="game-board">';
+
+    for (let row = 0; row < 3; row++) {
+        tableHTML += '<tr>';
+        for (let col = 0; col < 3; col++) {
+            const index = row * 3 + col;
+            const fieldValue = fields[index];
+            let symbol = '';
+
+            if (fieldValue === 'circle') {
+                symbol = generateAnimatedCircleSVG();
+            } else if (fieldValue === 'cross') {
+                symbol = generateAnimatedXSVG();
+            }
+
+            tableHTML += `<td onclick="handleClick(${index})">${symbol}</td>`;
+        }
+        tableHTML += '</tr>';
+    }
+
+    tableHTML += '</table>';
+    contentDiv.innerHTML = tableHTML;
+} Bitte ändere den code wie folgt ab: - Wenn ich auf ein <td> element klicke, wird eine Funktion aufgerufen. verwende hierfür das onclick-Attribut. - Die Funktion fügt in das passende feld in dem array "fields" abwechselnd das wort "circle" oder "cross" ein. -die funktion fügt dem .innerHTML-Befehl in das angeklickte <td>-element ein. Dieser HTML Code wird von generateAnimatedCircleSVG() oder von generateAnimatedXSVG() zurückgegeben. - Anschliessend wird die onclick-Funktion von dem jeweiligen <td> Element entfernt.
